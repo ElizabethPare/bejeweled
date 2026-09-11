@@ -43,7 +43,10 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-ink/10 px-5 py-6 text-center text-xs text-ink/45 md:px-8">
-        © {new Date().getFullYear()} Bejeweled Jewelry. All rights reserved.
+        © {new Date().getFullYear()} Bejeweled Jewelry. All rights reserved. ·{" "}
+        <Link href="/admin" className="hover:text-gold">
+          Admin
+        </Link>
       </div>
     </footer>
   );

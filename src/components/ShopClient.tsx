@@ -4,11 +4,11 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import ProductCard from "./ProductCard";
-import { categories, products, type Category } from "@/lib/products";
+import { categories, type Category, type Product } from "@/lib/products";
 
 type SortKey = "featured" | "price-asc" | "price-desc" | "new";
 
-export default function ShopClient() {
+export default function ShopClient({ products }: { products: Product[] }) {
   const searchParams = useSearchParams();
   const urlCategory = searchParams.get("category") as Category | null;
 
@@ -34,7 +34,7 @@ export default function ShopClient() {
         list.sort((a, b) => Number(b.isBestseller) - Number(a.isBestseller));
     }
     return list;
-  }, [active, sort]);
+  }, [active, sort, products]);
 
   return (
     <div className="mx-auto max-w-7xl px-5 pb-24 pt-10 md:px-8">

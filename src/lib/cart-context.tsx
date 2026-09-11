@@ -19,6 +19,7 @@ export type CartLine = {
   category: Category;
   colorway: string;
   accent: string;
+  image?: string | null;
   material: string;
   qty: number;
 };
@@ -84,6 +85,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           name: product.name,
           price: product.price,
           category: product.category,
+          image: product.image,
           colorway: product.colorway,
           accent: product.accent,
           material: product.material,

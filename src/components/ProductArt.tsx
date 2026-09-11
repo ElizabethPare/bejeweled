@@ -7,16 +7,32 @@ export default function ProductArt({
   category,
   colorway,
   accent,
+  image,
   size = "md",
 }: {
   category: Category;
   colorway: string;
   accent: string;
+  image?: string | null;
   size?: "sm" | "md" | "lg";
 }) {
   const Icon = categoryIcon[category];
   const iconSize =
     size === "lg" ? "w-24 h-24 md:w-32 md:h-32" : size === "sm" ? "w-10 h-10" : "w-16 h-16";
+
+  if (image) {
+    return (
+      <div className="relative h-full w-full overflow-hidden bg-blush-soft">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image}
+          alt=""
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:animate-shimmer group-hover:opacity-100" />
+      </div>
+    );
+  }
 
   return (
     <div

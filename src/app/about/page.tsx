@@ -3,7 +3,9 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ProductArt from "@/components/ProductArt";
 import { ArrowRightIcon, SparkleIcon } from "@/components/icons";
-import { products } from "@/lib/products";
+import { getCatalog } from "@/lib/products";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Our Story — Bejeweled",
@@ -26,8 +28,9 @@ const values = [
   },
 ];
 
-export default function AboutPage() {
-  const heroProduct = products[4];
+export default async function AboutPage() {
+  const products = await getCatalog();
+  const heroProduct = products[4] ?? products[0];
 
   return (
     <div className="pb-24">
@@ -53,16 +56,19 @@ export default function AboutPage() {
             it meets the standard we&apos;d want for ourselves.
           </p>
         </Reveal>
-        <Reveal delay={0.15}>
-          <div className="aspect-square overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(46,27,59,0.3)]">
-            <ProductArt
-              category={heroProduct.category}
-              colorway={heroProduct.colorway}
-              accent={heroProduct.accent}
-              size="lg"
-            />
-          </div>
-        </Reveal>
+        {heroProduct && (
+          <Reveal delay={0.15}>
+            <div className="aspect-square overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(46,27,59,0.3)]">
+              <ProductArt
+                category={heroProduct.category}
+                colorway={heroProduct.colorway}
+                accent={heroProduct.accent}
+                image={heroProduct.image}
+                size="lg"
+              />
+            </div>
+          </Reveal>
+        )}
       </section>
 
       <section className="mx-auto mt-24 max-w-6xl px-5 md:px-8">

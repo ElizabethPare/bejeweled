@@ -4,15 +4,41 @@ import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import ProductArt from "@/components/ProductArt";
 import { ArrowRightIcon, SparkleIcon } from "@/components/icons";
-import { categories, products } from "@/lib/products";
+import { categories, getCatalog } from "@/lib/products";
 
-export default function Home() {
-  const bestsellers = products.filter((p) => p.isBestseller).slice(0, 4);
-  const newArrivals = products.filter((p) => p.isNew).slice(0, 4);
+export const revalidate = 0;
+
+export default async function Home() {
+  const products = await getCatalog();
+  const bestsellers = (
+    products.filter((p) => p.isBestseller).length
+      ? products.filter((p) => p.isBestseller)
+      : products
+  ).slice(0, 4);
+  const newArrivals = (
+    products.filter((p) => p.isNew).length
+      ? products.filter((p) => p.isNew)
+      : [...products].reverse()
+  ).slice(0, 4);
+
+  if (products.length === 0) {
+    return (
+      <div className="mx-auto flex max-w-lg flex-col items-center gap-3 px-5 py-32 text-center">
+        <h1 className="font-script text-3xl text-ink">No hay productos todavía</h1>
+        <p className="text-ink/60">
+          Cargá tu primer producto desde{" "}
+          <Link href="/admin" className="text-gold underline">
+            /admin
+          </Link>
+          .
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="pb-24">
-      <HeroSection />
+      <HeroSection showcase={bestsellers.slice(0, 3)} />
 
       {/* Category tiles */}
       <section className="mx-auto max-w-7xl px-5 pt-16 md:px-8">
@@ -25,7 +51,8 @@ export default function Home() {
         </Reveal>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {categories.map((cat, i) => {
-            const sample = products.find((p) => p.category === cat)!;
+            const sample = products.find((p) => p.category === cat) ?? products[0];
+            if (!sample) return null;
             return (
               <Reveal key={cat} delay={i * 0.08}>
                 <Link
@@ -36,6 +63,7 @@ export default function Home() {
                     category={cat}
                     colorway={sample.colorway}
                     accent={sample.accent}
+                    image={sample.image}
                   />
                   <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/60 via-ink/0 to-ink/0 p-4">
                     <span className="text-lg font-medium text-pearl transition-transform duration-300 group-hover:translate-x-1">

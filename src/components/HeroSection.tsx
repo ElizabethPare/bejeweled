@@ -4,10 +4,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRightIcon, SparkleIcon } from "./icons";
 import ProductArt from "./ProductArt";
-import { products } from "@/lib/products";
+import type { Product } from "@/lib/products";
 
-export default function HeroSection() {
-  const showcase = products.filter((p) => p.isBestseller).slice(0, 3);
+export default function HeroSection({ showcase }: { showcase: Product[] }) {
+  const [main, ...rest] = showcase;
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-blush-soft via-pearl to-pearl">
@@ -72,26 +72,26 @@ export default function HeroSection() {
         >
           <div className="col-span-2 aspect-[3/2] overflow-hidden rounded-3xl shadow-[0_30px_60px_-20px_rgba(46,27,59,0.35)]">
             <ProductArt
-              category={showcase[0].category}
-              colorway={showcase[0].colorway}
-              accent={showcase[0].accent}
+              category={main.category}
+              colorway={main.colorway}
+              accent={main.accent}
+              image={main.image}
               size="lg"
             />
           </div>
-          <div className="aspect-square overflow-hidden rounded-3xl shadow-[0_20px_40px_-16px_rgba(46,27,59,0.3)]">
-            <ProductArt
-              category={showcase[1].category}
-              colorway={showcase[1].colorway}
-              accent={showcase[1].accent}
-            />
-          </div>
-          <div className="aspect-square overflow-hidden rounded-3xl shadow-[0_20px_40px_-16px_rgba(46,27,59,0.3)]">
-            <ProductArt
-              category={showcase[2].category}
-              colorway={showcase[2].colorway}
-              accent={showcase[2].accent}
-            />
-          </div>
+          {rest.slice(0, 2).map((p) => (
+            <div
+              key={p.id}
+              className="aspect-square overflow-hidden rounded-3xl shadow-[0_20px_40px_-16px_rgba(46,27,59,0.3)]"
+            >
+              <ProductArt
+                category={p.category}
+                colorway={p.colorway}
+                accent={p.accent}
+                image={p.image}
+              />
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

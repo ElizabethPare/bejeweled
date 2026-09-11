@@ -12,6 +12,7 @@ export type Product = {
   material: string;
   colorway: string; // hex used for the placeholder art + swatch
   accent: string; // secondary hex for the placeholder art gradient
+  image?: string | null; // real product photo, uploaded from /admin
   isNew?: boolean;
   isBestseller?: boolean;
 };
@@ -254,8 +255,97 @@ export function formatPrice(n: number) {
   return `$${n.toFixed(2)}`;
 }
 
-export function getRelatedProducts(product: Product, count = 4) {
-  return products
+export function getRelatedProducts(catalog: Product[], product: Product, count = 4) {
+  return catalog
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, count);
+}
+
+// ---------------------------------------------------------------------
+// Catalog: reads from the database (if connected) and falls back to the
+// static sample list above otherwise, so the storefront works even before
+// a database is attached in Vercel. The static list also doubles as the
+// seed data the first time the database is used.
+// ---------------------------------------------------------------------
+
+function staticProductToInput(p: Product) {
+  return {
+    slug: p.slug,
+    name: p.name,
+    category: p.category,
+    price: p.price,
+    compareAt: p.compareAt ?? null,
+    description: p.description,
+    details: p.details,
+    material: p.material,
+    colorway: p.colorway,
+    accent: p.accent,
+    imageUrl: p.image ?? null,
+    isNew: Boolean(p.isNew),
+    isBestseller: Boolean(p.isBestseller),
+  };
+}
+
+function dbRowToProduct(row: {
+  id: number;
+  slug: string;
+  name: string;
+  category: Category;
+  price: string | number;
+  compare_at: string | number | null;
+  description: string;
+  details: unknown;
+  material: string;
+  colorway: string;
+  accent: string;
+  image_url: string | null;
+  is_new: boolean;
+  is_bestseller: boolean;
+}): Product {
+  return {
+    id: String(row.id),
+    slug: row.slug,
+    name: row.name,
+    category: row.category,
+    price: Number(row.price),
+    compareAt: row.compare_at != null ? Number(row.compare_at) : undefined,
+    description: row.description,
+    details: Array.isArray(row.details) ? (row.details as string[]) : [],
+    material: row.material,
+    colorway: row.colorway,
+    accent: row.accent,
+    image: row.image_url,
+    isNew: row.is_new,
+    isBestseller: row.is_bestseller,
+  };
+}
+
+/** Full catalog for public pages: database when connected, static sample
+ * list otherwise. Never throws — a database error falls back to the
+ * static list so the storefront stays up. */
+export async function getCatalog(): Promise<Product[]> {
+  const { isDbReady, dbListProducts, dbSeedIfEmpty } = await import("./db");
+  if (!isDbReady()) return products;
+  try {
+    await dbSeedIfEmpty(products.map(staticProductToInput));
+    const rows = await dbListProducts();
+    return rows.map(dbRowToProduct);
+  } catch (err) {
+    console.error("getCatalog: falling back to static products", err);
+    return products;
+  }
+}
+
+export async function getCatalogProductBySlug(
+  slug: string
+): Promise<Product | undefined> {
+  const { isDbReady, dbGetProductBySlug } = await import("./db");
+  if (!isDbReady()) return getProductBySlug(slug);
+  try {
+    const row = await dbGetProductBySlug(slug);
+    return row ? dbRowToProduct(row) : undefined;
+  } catch (err) {
+    console.error("getCatalogProductBySlug: falling back to static", err);
+    return getProductBySlug(slug);
+  }
 }

@@ -34,12 +34,18 @@ const accordionSections = (product: Product) => [
   },
 ];
 
-export default function ProductDetailClient({ product }: { product: Product }) {
+export default function ProductDetailClient({
+  product,
+  catalog,
+}: {
+  product: Product;
+  catalog: Product[];
+}) {
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>("Details");
-  const related = getRelatedProducts(product);
+  const related = getRelatedProducts(catalog, product);
 
   function handleAdd() {
     addItem(product, qty);
@@ -72,6 +78,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             category={product.category}
             colorway={product.colorway}
             accent={product.accent}
+            image={product.image}
             size="lg"
           />
         </motion.div>

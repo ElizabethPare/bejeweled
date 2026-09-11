@@ -70,6 +70,7 @@ export default function CartDrawer() {
                               category={line.category}
                               colorway={line.colorway}
                               accent={line.accent}
+                              image={line.image}
                               size="sm"
                             />
                           </div>

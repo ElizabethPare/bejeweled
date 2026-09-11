@@ -32,6 +32,7 @@ export default function ProductCard({
           category={product.category}
           colorway={product.colorway}
           accent={product.accent}
+          image={product.image}
         />
         {(product.isNew || product.isBestseller) && (
           <span className="absolute left-3 top-3 rounded-full bg-ink/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-pearl backdrop-blur-sm">
