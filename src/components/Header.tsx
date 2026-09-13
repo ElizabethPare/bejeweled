@@ -27,20 +27,20 @@ export default function Header() {
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex gap-10">
               <span className="flex items-center gap-2">
-                <SparkleIcon className="h-3 w-3 text-gold" /> Envío gratis a
-                partir de $150
-              </span>
-              <span className="flex items-center gap-2">
                 <SparkleIcon className="h-3 w-3 text-gold" /> Piezas
                 seleccionadas una por una
+              </span>
+              <span className="flex items-center gap-2">
+                <SparkleIcon className="h-3 w-3 text-gold" /> Joyas para usar
+                todos los días
               </span>
               <span className="flex items-center gap-2">
                 <SparkleIcon className="h-3 w-3 text-gold" /> Novedades todos
                 los meses
               </span>
               <span className="flex items-center gap-2">
-                <SparkleIcon className="h-3 w-3 text-gold" /> Envío gratis a
-                partir de $150
+                <SparkleIcon className="h-3 w-3 text-gold" /> Piezas
+                seleccionadas una por una
               </span>
             </div>
           ))}

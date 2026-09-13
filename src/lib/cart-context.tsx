@@ -9,7 +9,7 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import type { Category, Product } from "./products";
+import { normalizeCategory, type Category, type Product } from "./products";
 
 export type CartLine = {
   productId: string;
@@ -52,8 +52,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     // rendered (empty) cart matches the client's first paint exactly.
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
+      const stored: unknown = raw ? JSON.parse(raw) : null;
+      // A cart saved by an older version of the site can hold categories
+      // under their previous names, so each line is repaired on the way in
+      // and anything unrecognisable is dropped rather than rendered.
+      const restored = Array.isArray(stored)
+        ? (stored as CartLine[])
+            .filter((l) => l && typeof l.productId === "string" && l.qty > 0)
+            .map((l) => ({ ...l, category: normalizeCategory(String(l.category)) }))
+        : [];
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (raw) setLines(JSON.parse(raw));
+      if (restored.length) setLines(restored);
     } catch {
       // ignore corrupted storage
     }

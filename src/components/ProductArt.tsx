@@ -1,7 +1,7 @@
 "use client";
 
 import { categoryIcon, SparkleIcon } from "./icons";
-import type { Category } from "@/lib/products";
+import { normalizeCategory, type Category } from "@/lib/products";
 
 export default function ProductArt({
   category,
@@ -16,7 +16,11 @@ export default function ProductArt({
   image?: string | null;
   size?: "sm" | "md" | "lg";
 }) {
-  const Icon = categoryIcon[category];
+  // `category` can be a stale value — a cart saved in localStorage before the
+  // categories were translated still carries the old English name. Resolving
+  // through normalizeCategory (plus a fallback) keeps an unknown value from
+  // rendering `undefined` as a component, which crashes the whole page.
+  const Icon = categoryIcon[normalizeCategory(category)] ?? categoryIcon.Anillos;
   const iconSize =
     size === "lg" ? "w-24 h-24 md:w-32 md:h-32" : size === "sm" ? "w-10 h-10" : "w-16 h-16";
 

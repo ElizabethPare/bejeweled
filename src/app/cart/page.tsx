@@ -113,14 +113,16 @@ export default function CartPage() {
           </div>
           <div className="mt-2 flex justify-between text-sm text-ink/70">
             <span>Envío</span>
-            <span>{subtotal >= 150 ? "Gratis" : formatPrice(9)}</span>
+            <span>A coordinar</span>
           </div>
           <div className="mt-4 flex justify-between border-t border-ink/10 pt-4 text-base text-ink">
             <span>Total</span>
-            <span>
-              {formatPrice(subtotal + (subtotal >= 150 || subtotal === 0 ? 0 : 9))}
-            </span>
+            <span>{formatPrice(subtotal)}</span>
           </div>
+          <p className="mt-2 text-xs text-ink/45">
+            El costo del envío se coordina después de la compra y no está
+            incluido en este total.
+          </p>
           <Link
             href="/checkout"
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-ink py-3.5 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"

@@ -19,9 +19,9 @@ const accordionSections = (product: Product) => [
   {
     title: "Envíos y cambios",
     content: [
-      "Envío estándar gratis en compras superiores a $150",
-      "Los pedidos se despachan en 3 a 5 días hábiles",
-      "Cambios dentro de los 30 días, en piezas sin uso",
+      "El costo del envío se coordina después de la compra",
+      "Preparamos los pedidos en 3 a 5 días hábiles",
+      "Consultanos por cambios en piezas sin uso",
     ],
   },
   {

@@ -13,8 +13,9 @@ export default function CheckoutPage() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
 
-  const shipping = subtotal === 0 || subtotal >= 150 ? 0 : 9;
-  const total = subtotal + shipping;
+  // Shipping isn't priced in the storefront yet — it gets arranged with the
+  // customer after the order, so it is shown as pending and left out of the total.
+  const total = subtotal;
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -127,12 +128,15 @@ export default function CheckoutPage() {
           </div>
           <div className="mt-2 flex justify-between text-sm text-ink/70">
             <span>Envío</span>
-            <span>{shipping === 0 ? "Gratis" : formatPrice(shipping)}</span>
+            <span>A coordinar</span>
           </div>
           <div className="mt-4 flex justify-between border-t border-ink/10 pt-4 text-base text-ink">
             <span>Total</span>
             <span>{formatPrice(total)}</span>
           </div>
+          <p className="mt-2 text-xs text-ink/45">
+            El costo del envío se coordina después de la compra.
+          </p>
         </div>
       </div>
     </div>
