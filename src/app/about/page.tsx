@@ -8,23 +8,23 @@ import { getCatalog } from "@/lib/products";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Our Story — Bejeweled",
+  title: "Nuestra historia — Bejeweled",
   description:
-    "Bejeweled is a small jewelry studio designing everyday fine jewelry, handcrafted in small batches.",
+    "Bejeweled es una tienda de joyas seleccionadas para usar todos los días: anillos, collares, aros y pulseras elegidos uno por uno.",
 };
 
 const values = [
   {
-    title: "Made to be worn",
-    body: "No piece leaves the studio until it can survive a full day — dishes, workouts, naps and all.",
+    title: "Para usar de verdad",
+    body: "Ninguna pieza entra al catálogo si no aguanta un día entero: la ducha apurada, el gimnasio, la siesta y todo lo demás.",
   },
   {
-    title: "Small batches, always",
-    body: "We design and finish jewelry in limited runs so every piece gets real attention, not a factory line.",
+    title: "Selección, no cantidad",
+    body: "Traemos pocas piezas por vez. Probamos cada modelo antes de sumarlo, y lo que no nos convence simplemente no llega a la tienda.",
   },
   {
-    title: "Kind to skin, kind to earth",
-    body: "Nickel-free, tarnish-resistant, and packaged in recyclable materials from day one.",
+    title: "Buenas con tu piel",
+    body: "Sin níquel, con terminaciones antimanchas y packaging reciclable desde el primer día.",
   },
 ];
 
@@ -37,23 +37,23 @@ export default async function AboutPage() {
       <section className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-5 pt-14 md:grid-cols-2 md:px-8">
         <Reveal>
           <span className="inline-flex items-center gap-2 rounded-full bg-blush px-4 py-1.5 text-xs uppercase tracking-[0.16em] text-ink/70">
-            <SparkleIcon className="h-3 w-3 text-gold" /> Our story
+            <SparkleIcon className="h-3 w-3 text-gold" /> Nuestra historia
           </span>
-          <h1 className="font-script mt-6 text-balance text-4xl leading-tight text-ink sm:text-5xl">
-            Jewelry for the life you&apos;re already living
+          <h1 className="font-script font-script-display mt-6 text-balance text-4xl text-ink sm:text-5xl">
+            Joyas para la vida que ya estás viviendo
           </h1>
           <p className="mt-6 text-ink/65">
-            Bejeweled started with a simple annoyance: most &ldquo;fine&rdquo; jewelry
-            felt too precious to actually wear. So we set out to make pieces
-            with the polish of fine jewelry and the durability to survive
-            real, everyday life — the commute, the gym bag, the good and the
-            ordinary days alike.
+            Bejeweled empezó con una molestia simple: casi toda la joyería
+            &ldquo;linda&rdquo; parecía demasiado delicada para usarla en serio. Así
+            que salimos a buscar piezas que tuvieran la terminación de una
+            joya y la resistencia para bancarse el día a día — el colectivo,
+            el bolso del gimnasio, los días especiales y los comunes.
           </p>
           <p className="mt-4 text-ink/65">
-            Every design starts as a sketch in our studio, gets prototyped by
-            hand, and is finished in small batches by artisans we&apos;ve worked
-            with for years. Nothing is mass-produced, and nothing ships until
-            it meets the standard we&apos;d want for ourselves.
+            No fabricamos: elegimos. Trabajamos con proveedores que ya
+            conocemos, pedimos muestras antes de comprar y probamos cada
+            modelo nosotras mismas. Si una pieza se descascara, se pone verde
+            o molesta después de unas horas, no entra al catálogo.
           </p>
         </Reveal>
         {heroProduct && (
@@ -74,7 +74,7 @@ export default async function AboutPage() {
       <section className="mx-auto mt-24 max-w-6xl px-5 md:px-8">
         <Reveal>
           <h2 className="font-script text-center text-3xl text-ink md:text-4xl">
-            What we stand for
+            Lo que nos importa
           </h2>
         </Reveal>
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -92,18 +92,18 @@ export default async function AboutPage() {
 
       <section className="mx-auto mt-24 max-w-4xl px-5 text-center md:px-8">
         <Reveal>
-          <p className="font-script text-2xl leading-relaxed text-ink sm:text-3xl">
-            &ldquo;We&apos;re not trying to make you buy more jewelry. We&apos;re trying to
-            make the pieces you do buy the ones you never take off.&rdquo;
+          <p className="font-script text-2xl text-ink sm:text-3xl">
+            &ldquo;No queremos que compres más joyas. Queremos que las que
+            compres sean esas que no te sacás nunca.&rdquo;
           </p>
           <span className="mt-4 block text-xs uppercase tracking-[0.2em] text-ink/45">
-            — Founder, Bejeweled
+            — Fundadora de Bejeweled
           </span>
           <Link
             href="/shop"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
           >
-            Shop the collection <ArrowRightIcon className="h-4 w-4" />
+            Ver la colección <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </Reveal>
       </section>

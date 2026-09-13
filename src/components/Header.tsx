@@ -8,11 +8,11 @@ import { useCart } from "@/lib/cart-context";
 import { BagIcon, CloseIcon, MenuIcon, SparkleIcon } from "./icons";
 
 const navLinks = [
-  { href: "/shop", label: "Shop All" },
-  { href: "/shop?category=Rings", label: "Rings" },
-  { href: "/shop?category=Necklaces", label: "Necklaces" },
-  { href: "/shop?category=Earrings", label: "Earrings" },
-  { href: "/about", label: "About" },
+  { href: "/shop", label: "Ver todo" },
+  { href: "/shop?category=Anillos", label: "Anillos" },
+  { href: "/shop?category=Collares", label: "Collares" },
+  { href: "/shop?category=Aros", label: "Aros" },
+  { href: "/about", label: "Nosotras" },
 ];
 
 export default function Header() {
@@ -27,20 +27,20 @@ export default function Header() {
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex gap-10">
               <span className="flex items-center gap-2">
-                <SparkleIcon className="h-3 w-3 text-gold" /> Free shipping
-                over $150
+                <SparkleIcon className="h-3 w-3 text-gold" /> Envío gratis a
+                partir de $150
               </span>
               <span className="flex items-center gap-2">
-                <SparkleIcon className="h-3 w-3 text-gold" /> Handcrafted,
-                one piece at a time
+                <SparkleIcon className="h-3 w-3 text-gold" /> Piezas
+                seleccionadas una por una
               </span>
               <span className="flex items-center gap-2">
-                <SparkleIcon className="h-3 w-3 text-gold" /> New drops every
-                month
+                <SparkleIcon className="h-3 w-3 text-gold" /> Novedades todos
+                los meses
               </span>
               <span className="flex items-center gap-2">
-                <SparkleIcon className="h-3 w-3 text-gold" /> Free shipping
-                over $150
+                <SparkleIcon className="h-3 w-3 text-gold" /> Envío gratis a
+                partir de $150
               </span>
             </div>
           ))}
@@ -52,13 +52,13 @@ export default function Header() {
           <button
             className="flex items-center md:hidden"
             onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
+            aria-label="Abrir menú"
           >
             <MenuIcon className="h-6 w-6 text-ink" />
           </button>
 
           <Link href="/" className="flex flex-col items-center md:items-start">
-            <span className="font-script text-3xl leading-none text-ink md:text-4xl">
+            <span className="font-script font-script-tight text-3xl text-ink md:text-4xl">
               Bejeweled
             </span>
             <span className="mt-0.5 text-[10px] uppercase tracking-[0.35em] text-gold">
@@ -85,7 +85,7 @@ export default function Header() {
           <button
             onClick={openDrawer}
             className="relative flex items-center gap-2 rounded-full border border-ink/10 px-3 py-2 transition-colors hover:border-gold hover:bg-blush-soft"
-            aria-label="Open cart"
+            aria-label="Abrir carrito"
           >
             <BagIcon className="h-5 w-5 text-ink" />
             <AnimatePresence>
@@ -124,7 +124,7 @@ export default function Header() {
             >
               <div className="flex items-center justify-between">
                 <span className="font-script text-2xl text-ink">Bejeweled</span>
-                <button onClick={() => setMobileOpen(false)} aria-label="Close menu">
+                <button onClick={() => setMobileOpen(false)} aria-label="Cerrar menú">
                   <CloseIcon className="h-6 w-6 text-ink" />
                 </button>
               </div>

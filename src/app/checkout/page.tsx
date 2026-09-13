@@ -30,13 +30,13 @@ export default function CheckoutPage() {
   if (lines.length === 0) {
     return (
       <div className="mx-auto flex max-w-xl flex-col items-center gap-5 px-5 py-32 text-center">
-        <h1 className="font-script text-3xl text-ink">Nothing to check out yet</h1>
-        <p className="text-ink/60">Add a piece or two to your bag first.</p>
+        <h1 className="font-script text-3xl text-ink">Todavía no hay nada para comprar</h1>
+        <p className="text-ink/60">Agregá alguna pieza al carrito primero.</p>
         <Link
           href="/shop"
           className="rounded-full bg-ink px-7 py-3 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
         >
-          Browse the shop
+          Ver la tienda
         </Link>
       </div>
     );
@@ -45,47 +45,47 @@ export default function CheckoutPage() {
   return (
     <div className="mx-auto max-w-5xl px-5 py-14 md:px-8">
       <h1 className="font-script mb-10 text-center text-4xl text-ink md:text-5xl">
-        Checkout
+        Finalizar compra
       </h1>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.5fr_1fr]">
         <form onSubmit={handleSubmit} className="flex flex-col gap-8">
           <fieldset className="rounded-2xl border border-ink/8 bg-white/40 p-6">
             <legend className="px-2 text-sm font-medium text-ink">
-              Contact
+              Contacto
             </legend>
             <input
               required
               type="email"
-              placeholder="Email address"
+              placeholder="Correo electrónico"
               className="w-full rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold"
             />
           </fieldset>
 
           <fieldset className="rounded-2xl border border-ink/8 bg-white/40 p-6">
             <legend className="px-2 text-sm font-medium text-ink">
-              Shipping Address
+              Dirección de envío
             </legend>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <input required placeholder="First name" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
-              <input required placeholder="Last name" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
-              <input required placeholder="Address" className="sm:col-span-2 rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
-              <input required placeholder="City" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
-              <input required placeholder="Postal code" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="Nombre" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="Apellido" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="Dirección" className="sm:col-span-2 rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="Ciudad" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="Código postal" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
             </div>
           </fieldset>
 
           <fieldset className="rounded-2xl border border-ink/8 bg-white/40 p-6">
             <legend className="px-2 text-sm font-medium text-ink">
-              Payment
+              Pago
             </legend>
             <p className="mb-3 text-xs text-ink/45">
-              This is a demo storefront — no real payment will be charged.
+              Esta tienda todavía no procesa pagos reales — no se cobra nada.
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <input required placeholder="Card number" className="sm:col-span-2 rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
-              <input required placeholder="MM / YY" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
-              <input required placeholder="CVC" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="Número de tarjeta" className="sm:col-span-2 rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="MM / AA" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
+              <input required placeholder="CVV" className="rounded-xl border border-ink/10 bg-transparent px-4 py-3 text-sm outline-none focus:border-gold" />
             </div>
           </fieldset>
 
@@ -98,11 +98,11 @@ export default function CheckoutPage() {
             {submitting ? (
               <>
                 <SparkleIcon className="h-4 w-4 animate-spin text-gold" />
-                Placing order…
+                Procesando pedido…
               </>
             ) : (
               <>
-                Place order — {formatPrice(total)}
+                Confirmar pedido — {formatPrice(total)}
                 <ArrowRightIcon className="h-4 w-4" />
               </>
             )}
@@ -110,7 +110,7 @@ export default function CheckoutPage() {
         </form>
 
         <div className="h-max rounded-2xl border border-ink/8 bg-white/40 p-6">
-          <h2 className="mb-4 font-medium text-ink">Order Summary</h2>
+          <h2 className="mb-4 font-medium text-ink">Resumen del pedido</h2>
           <ul className="flex flex-col gap-3">
             {lines.map((line) => (
               <li key={line.productId} className="flex justify-between text-sm text-ink/70">
@@ -126,8 +126,8 @@ export default function CheckoutPage() {
             <span>{formatPrice(subtotal)}</span>
           </div>
           <div className="mt-2 flex justify-between text-sm text-ink/70">
-            <span>Shipping</span>
-            <span>{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
+            <span>Envío</span>
+            <span>{shipping === 0 ? "Gratis" : formatPrice(shipping)}</span>
           </div>
           <div className="mt-4 flex justify-between border-t border-ink/10 pt-4 text-base text-ink">
             <span>Total</span>

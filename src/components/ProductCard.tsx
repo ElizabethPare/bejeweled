@@ -36,12 +36,12 @@ export default function ProductCard({
         />
         {(product.isNew || product.isBestseller) && (
           <span className="absolute left-3 top-3 rounded-full bg-ink/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-pearl backdrop-blur-sm">
-            {product.isNew ? "New" : "Bestseller"}
+            {product.isNew ? "Nuevo" : "Más vendido"}
           </span>
         )}
         {product.compareAt && (
           <span className="absolute right-3 top-3 rounded-full bg-gold px-3 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-ink">
-            Sale
+            Oferta
           </span>
         )}
         <button
@@ -52,7 +52,7 @@ export default function ProductCard({
           }}
           className="absolute inset-x-3 bottom-3 translate-y-14 rounded-full bg-ink py-2.5 text-xs font-medium uppercase tracking-[0.12em] text-pearl opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-ink-soft"
         >
-          Quick add
+          Agregar
         </button>
       </Link>
       <Link href={`/product/${product.slug}`} className="mt-4 flex flex-col gap-1">

@@ -44,17 +44,17 @@ export default function CheckoutSuccessPage() {
         transition={{ delay: 0.25 }}
       >
         <h1 className="font-script text-4xl text-ink md:text-5xl">
-          Thank you, beautifully!
+          ¡Gracias por tu compra!
         </h1>
         <p className="mx-auto mt-4 max-w-sm text-ink/65">
-          Your order has been placed. A confirmation is on its way to your
-          inbox, and your new favorites are being wrapped as we speak.
+          Recibimos tu pedido. Te enviamos la confirmación por correo y ya
+          estamos preparando tus nuevas favoritas.
         </p>
         <Link
           href="/shop"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
         >
-          Keep browsing
+          Seguir viendo
         </Link>
       </motion.div>
     </div>

@@ -30,8 +30,8 @@ export default function CartDrawer() {
             className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-pearl shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-ink/10 px-6 py-5">
-              <h2 className="font-script text-2xl text-ink">Your Bag</h2>
-              <button onClick={closeDrawer} aria-label="Close cart">
+              <h2 className="font-script text-2xl text-ink">Tu carrito</h2>
+              <button onClick={closeDrawer} aria-label="Cerrar carrito">
                 <CloseIcon className="h-5 w-5 text-ink" />
               </button>
             </div>
@@ -40,14 +40,14 @@ export default function CartDrawer() {
               <div className="flex flex-1 flex-col items-center justify-center gap-4 px-8 text-center">
                 <BagIcon className="h-10 w-10 text-ink/30" />
                 <p className="text-ink/60">
-                  Your bag is feeling a little light. Let&apos;s fix that.
+                  Tu carrito está un poco vacío. Vamos a solucionarlo.
                 </p>
                 <Link
                   href="/shop"
                   onClick={closeDrawer}
                   className="rounded-full bg-ink px-6 py-2.5 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
                 >
-                  Browse the shop
+                  Ver la tienda
                 </Link>
               </div>
             ) : (
@@ -103,7 +103,7 @@ export default function CartDrawer() {
                                     setQty(line.productId, line.qty - 1)
                                   }
                                   className="text-ink/60 hover:text-ink"
-                                  aria-label="Decrease quantity"
+                                  aria-label="Restar una unidad"
                                 >
                                   <MinusIcon className="h-3.5 w-3.5" />
                                 </button>
@@ -115,7 +115,7 @@ export default function CartDrawer() {
                                     setQty(line.productId, line.qty + 1)
                                   }
                                   className="text-ink/60 hover:text-ink"
-                                  aria-label="Increase quantity"
+                                  aria-label="Sumar una unidad"
                                 >
                                   <PlusIcon className="h-3.5 w-3.5" />
                                 </button>
@@ -139,21 +139,21 @@ export default function CartDrawer() {
                     </span>
                   </div>
                   <p className="mb-4 text-xs text-ink/45">
-                    Shipping and taxes calculated at checkout.
+                    El envío se calcula al finalizar la compra.
                   </p>
                   <Link
                     href="/checkout"
                     onClick={closeDrawer}
                     className="block w-full rounded-full bg-ink py-3 text-center text-sm uppercase tracking-[0.14em] text-pearl transition-colors hover:bg-ink-soft"
                   >
-                    Checkout
+                    Finalizar compra
                   </Link>
                   <Link
                     href="/cart"
                     onClick={closeDrawer}
                     className="mt-2 block w-full rounded-full border border-ink/15 py-3 text-center text-sm uppercase tracking-[0.14em] text-ink transition-colors hover:border-gold hover:bg-blush-soft"
                   >
-                    View bag
+                    Ver el carrito
                   </Link>
                 </div>
               </>

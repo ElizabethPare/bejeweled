@@ -34,32 +34,32 @@ export default function HeroSection({ showcase }: { showcase: Product[] }) {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="inline-flex items-center gap-2 rounded-full bg-blush px-4 py-1.5 text-xs uppercase tracking-[0.16em] text-ink/70">
-            <SparkleIcon className="h-3 w-3 text-gold" /> Handcrafted in
-            small batches
+            <SparkleIcon className="h-3 w-3 text-gold" /> Selección
+            cuidada, pieza por pieza
           </span>
-          <h1 className="font-script mt-6 text-balance text-5xl leading-[1.05] text-ink sm:text-6xl md:text-7xl">
-            Little bits of
+          <h1 className="font-script font-script-display mt-6 text-balance text-5xl text-ink sm:text-6xl">
+            Un poco de brillo,
             <br />
-            sparkle, every day
+            todos los días
           </h1>
           <p className="mt-6 max-w-md text-balance text-ink/65">
-            Bejeweled makes fine jewelry for real life — the pieces you reach
-            for without thinking, that feel just as good on a Tuesday as
-            they do on your birthday.
+            En Bejeweled elegimos joyas para la vida real — esas que te
+            ponés sin pensarlo y que quedan igual de bien un martes
+            cualquiera que el día de tu cumpleaños.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/shop"
               className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm uppercase tracking-[0.12em] text-pearl transition-transform hover:scale-[1.03] active:scale-95"
             >
-              Shop the collection
+              Ver la colección
               <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/about"
               className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-7 py-3.5 text-sm uppercase tracking-[0.12em] text-ink transition-colors hover:border-gold hover:bg-blush-soft"
             >
-              Our story
+              Nuestra historia
             </Link>
           </div>
         </motion.div>

@@ -15,21 +15,21 @@ import {
 import { CheckIcon, MinusIcon, PlusIcon, SparkleIcon } from "./icons";
 
 const accordionSections = (product: Product) => [
-  { title: "Details", content: product.details },
+  { title: "Detalles", content: product.details },
   {
-    title: "Shipping & Returns",
+    title: "Envíos y cambios",
     content: [
-      "Free standard shipping on orders over $150",
-      "Made-to-order pieces ship in 3–5 business days",
-      "30-day returns on unworn, unaltered items",
+      "Envío estándar gratis en compras superiores a $150",
+      "Los pedidos se despachan en 3 a 5 días hábiles",
+      "Cambios dentro de los 30 días, en piezas sin uso",
     ],
   },
   {
-    title: "Jewelry Care",
+    title: "Cuidado de las joyas",
     content: [
-      "Store in the pouch provided, away from moisture",
-      "Remove before swimming, showering, or exercising",
-      "Polish gently with a soft cloth",
+      "Guardalas en su bolsita, lejos de la humedad",
+      "Sacátelas antes de nadar, bañarte o entrenar",
+      "Limpialas suavemente con un paño seco",
     ],
   },
 ];
@@ -44,7 +44,7 @@ export default function ProductDetailClient({
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
-  const [openSection, setOpenSection] = useState<string | null>("Details");
+  const [openSection, setOpenSection] = useState<string | null>("Detalles");
   const related = getRelatedProducts(catalog, product);
 
   function handleAdd() {
@@ -56,9 +56,9 @@ export default function ProductDetailClient({
   return (
     <div className="mx-auto max-w-7xl px-5 pb-24 pt-10 md:px-8">
       <nav className="mb-8 flex items-center gap-2 text-xs text-ink/45">
-        <Link href="/" className="hover:text-gold">Home</Link>
+        <Link href="/" className="hover:text-gold">Inicio</Link>
         <span>/</span>
-        <Link href="/shop" className="hover:text-gold">Shop</Link>
+        <Link href="/shop" className="hover:text-gold">Tienda</Link>
         <span>/</span>
         <Link href={`/shop?category=${product.category}`} className="hover:text-gold">
           {product.category}
@@ -104,7 +104,7 @@ export default function ProductDetailClient({
             )}
             {(product.isNew || product.isBestseller) && (
               <span className="rounded-full bg-blush-soft px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-ink/60">
-                {product.isNew ? "New arrival" : "Bestseller"}
+                {product.isNew ? "Recién llegado" : "Más vendido"}
               </span>
             )}
           </div>
@@ -122,7 +122,7 @@ export default function ProductDetailClient({
             <div className="flex items-center gap-4 rounded-full border border-ink/10 px-4 py-2.5">
               <button
                 onClick={() => setQty((q) => Math.max(1, q - 1))}
-                aria-label="Decrease quantity"
+                aria-label="Restar una unidad"
                 className="text-ink/60 hover:text-ink"
               >
                 <MinusIcon className="h-4 w-4" />
@@ -130,7 +130,7 @@ export default function ProductDetailClient({
               <span className="w-5 text-center">{qty}</span>
               <button
                 onClick={() => setQty((q) => q + 1)}
-                aria-label="Increase quantity"
+                aria-label="Sumar una unidad"
                 className="text-ink/60 hover:text-ink"
               >
                 <PlusIcon className="h-4 w-4" />
@@ -150,7 +150,7 @@ export default function ProductDetailClient({
                     exit={{ opacity: 0, y: -8 }}
                     className="flex items-center gap-2"
                   >
-                    <CheckIcon className="h-4 w-4 text-gold" /> Added to bag
+                    <CheckIcon className="h-4 w-4 text-gold" /> Agregado
                   </motion.span>
                 ) : (
                   <motion.span
@@ -160,7 +160,7 @@ export default function ProductDetailClient({
                     exit={{ opacity: 0, y: -8 }}
                     className="flex items-center gap-2"
                   >
-                    <SparkleIcon className="h-4 w-4 text-gold" /> Add to Bag
+                    <SparkleIcon className="h-4 w-4 text-gold" /> Agregar al carrito
                   </motion.span>
                 )}
               </AnimatePresence>
@@ -213,7 +213,7 @@ export default function ProductDetailClient({
         <section className="mt-24">
           <Reveal>
             <h2 className="font-script mb-8 text-3xl text-ink md:text-4xl">
-              You might also love
+              También te puede gustar
             </h2>
           </Reveal>
           <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-4">

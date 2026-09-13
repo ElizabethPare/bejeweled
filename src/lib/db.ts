@@ -161,3 +161,40 @@ export async function dbSeedIfEmpty(seed: ProductInput[]) {
     await dbCreateProduct(p);
   }
 }
+
+// Runs at most once per server instance — seeding is only ever relevant on
+// the first catalog read.
+let seedChecked = false;
+
+/**
+ * Puts the sample catalog in place when the shop has no products of its own.
+ *
+ * Seeds an empty table, and also replaces an older set of samples (matched by
+ * `replaceableSlugs`) that is still sitting there untouched — that is how the
+ * English placeholder rows get swapped for the Spanish ones.
+ *
+ * It deliberately does nothing as soon as the table holds a single row the
+ * shop owner created, so real products are never deleted.
+ */
+export async function dbSeedSamples(
+  seed: ProductInput[],
+  replaceableSlugs: string[] = []
+) {
+  if (seedChecked) return;
+  await ensureSchema();
+
+  const rows = (await sql!`SELECT slug FROM products`) as { slug: string }[];
+  seedChecked = true;
+
+  if (rows.length === 0) {
+    for (const p of seed) await dbCreateProduct(p);
+    return;
+  }
+
+  const replaceable = new Set(replaceableSlugs);
+  const onlyOldSamples = rows.every((r) => replaceable.has(r.slug));
+  if (!onlyOldSamples) return; // the owner has their own products — leave it alone
+
+  await sql!`DELETE FROM products WHERE slug = ANY(${replaceableSlugs})`;
+  for (const p of seed) await dbCreateProduct(p);
+}

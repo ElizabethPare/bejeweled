@@ -6,9 +6,9 @@ import { getCatalog } from "@/lib/products";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Shop All Jewelry — Bejeweled",
+  title: "Todas las joyas — Bejeweled",
   description:
-    "Browse Bejeweled's full collection of rings, necklaces, earrings and bracelets.",
+    "Mirá toda la colección de Bejeweled: anillos, collares, aros y pulseras.",
 };
 
 export default async function ShopPage() {

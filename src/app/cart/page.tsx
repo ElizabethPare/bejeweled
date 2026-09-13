@@ -14,15 +14,15 @@ export default function CartPage() {
     return (
       <div className="mx-auto flex max-w-xl flex-col items-center gap-5 px-5 py-32 text-center">
         <BagIcon className="h-12 w-12 text-ink/25" />
-        <h1 className="font-script text-3xl text-ink">Your bag is empty</h1>
+        <h1 className="font-script text-3xl text-ink">Tu carrito está vacío</h1>
         <p className="text-ink/60">
-          Let&apos;s find something worth sparkling for.
+          Busquemos algo que valga la pena.
         </p>
         <Link
           href="/shop"
           className="rounded-full bg-ink px-7 py-3 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
         >
-          Browse the shop
+          Ver la tienda
         </Link>
       </div>
     );
@@ -31,7 +31,7 @@ export default function CartPage() {
   return (
     <div className="mx-auto max-w-5xl px-5 py-14 md:px-8">
       <h1 className="font-script mb-10 text-center text-4xl text-ink md:text-5xl">
-        Your Bag
+        Tu carrito
       </h1>
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.6fr_1fr]">
@@ -72,7 +72,7 @@ export default function CartPage() {
                     <button
                       onClick={() => removeItem(line.productId)}
                       className="text-ink/40 hover:text-ink"
-                      aria-label={`Remove ${line.name}`}
+                      aria-label={`Quitar ${line.name}`}
                     >
                       <TrashIcon className="h-4 w-4" />
                     </button>
@@ -82,7 +82,7 @@ export default function CartPage() {
                       <button
                         onClick={() => setQty(line.productId, line.qty - 1)}
                         className="text-ink/60 hover:text-ink"
-                        aria-label="Decrease quantity"
+                        aria-label="Restar una unidad"
                       >
                         <MinusIcon className="h-3.5 w-3.5" />
                       </button>
@@ -90,7 +90,7 @@ export default function CartPage() {
                       <button
                         onClick={() => setQty(line.productId, line.qty + 1)}
                         className="text-ink/60 hover:text-ink"
-                        aria-label="Increase quantity"
+                        aria-label="Sumar una unidad"
                       >
                         <PlusIcon className="h-3.5 w-3.5" />
                       </button>
@@ -106,14 +106,14 @@ export default function CartPage() {
         </ul>
 
         <div className="h-max rounded-2xl border border-ink/8 bg-white/40 p-6">
-          <h2 className="mb-4 font-medium text-ink">Order Summary</h2>
+          <h2 className="mb-4 font-medium text-ink">Resumen del pedido</h2>
           <div className="flex justify-between text-sm text-ink/70">
             <span>Subtotal</span>
             <span>{formatPrice(subtotal)}</span>
           </div>
           <div className="mt-2 flex justify-between text-sm text-ink/70">
-            <span>Shipping</span>
-            <span>{subtotal >= 150 ? "Free" : formatPrice(9)}</span>
+            <span>Envío</span>
+            <span>{subtotal >= 150 ? "Gratis" : formatPrice(9)}</span>
           </div>
           <div className="mt-4 flex justify-between border-t border-ink/10 pt-4 text-base text-ink">
             <span>Total</span>
@@ -125,7 +125,7 @@ export default function CartPage() {
             href="/checkout"
             className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-ink py-3.5 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
           >
-            Checkout <ArrowRightIcon className="h-4 w-4" />
+            Finalizar compra <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </div>
       </div>

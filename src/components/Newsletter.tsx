@@ -25,10 +25,10 @@ export default function Newsletter() {
         className="absolute bottom-[20%] left-[22%] h-3 w-3 text-gold/50 animate-sparkle-float"
         style={{ animationDelay: "0.7s" }}
       />
-      <h3 className="font-script text-3xl sm:text-4xl">Stay in the sparkle</h3>
+      <h3 className="font-script text-3xl sm:text-4xl">Sumate al brillo</h3>
       <p className="mx-auto mt-3 max-w-md text-sm text-pearl/70">
-        New drops, styling notes, and the occasional just-for-subscribers
-        discount. No spam, just shine.
+        Novedades, ideas para combinar tus piezas y algún que otro
+        descuento solo para suscriptoras. Sin spam, puro brillo.
       </p>
 
       <AnimatePresence mode="wait">
@@ -42,7 +42,7 @@ export default function Newsletter() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold text-ink">
               <CheckIcon className="h-3.5 w-3.5" />
             </span>
-            You&apos;re on the list — welcome to Bejeweled.
+            Ya estás en la lista — bienvenida a Bejeweled.
           </motion.div>
         ) : (
           <motion.form
@@ -56,7 +56,7 @@ export default function Newsletter() {
             <input
               type="email"
               required
-              placeholder="you@email.com"
+              placeholder="tu@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full rounded-full border border-pearl/20 bg-pearl/5 px-5 py-3 text-sm text-pearl placeholder:text-pearl/40 outline-none transition-colors focus:border-gold"
@@ -65,7 +65,7 @@ export default function Newsletter() {
               type="submit"
               className="shrink-0 rounded-full bg-gold px-6 py-3 text-sm font-medium uppercase tracking-[0.1em] text-ink transition-transform hover:scale-[1.03] active:scale-95"
             >
-              Subscribe
+              Suscribirme
             </button>
           </motion.form>
         )}

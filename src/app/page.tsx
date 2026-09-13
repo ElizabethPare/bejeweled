@@ -45,7 +45,7 @@ export default async function Home() {
         <Reveal>
           <div className="mb-8 flex items-end justify-between">
             <h2 className="font-script text-3xl text-ink md:text-4xl">
-              Shop by category
+              Comprá por categoría
             </h2>
           </div>
         </Reveal>
@@ -83,17 +83,17 @@ export default async function Home() {
           <div className="mb-8 flex items-end justify-between">
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-gold">
-                Loved by many
+                Las favoritas de siempre
               </span>
-              <h2 className="font-script text-3xl text-ink md:text-4xl">
-                Bestsellers
+              <h2 className="font-script mt-1 text-3xl text-ink md:text-4xl">
+                Más vendidos
               </h2>
             </div>
             <Link
               href="/shop"
               className="hidden items-center gap-1.5 text-sm text-ink/70 hover:text-gold md:flex"
             >
-              View all <ArrowRightIcon className="h-4 w-4" />
+              Ver todo <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
         </Reveal>
@@ -115,18 +115,19 @@ export default async function Home() {
               className="absolute right-[10%] bottom-[22%] h-4 w-4 text-ink/30 animate-sparkle-float"
               style={{ animationDelay: "1s" }}
             />
-            <p className="font-script mx-auto max-w-2xl text-2xl leading-relaxed text-ink sm:text-3xl">
-              &ldquo;Jewelry shouldn&apos;t wait for a special occasion. Every piece we
-              make is meant for a Tuesday as much as a wedding.&rdquo;
+            <p className="font-script mx-auto max-w-2xl text-2xl text-ink sm:text-3xl">
+              &ldquo;Las joyas no tienen que esperar una ocasión especial. Cada
+              pieza que elegimos es tan para un martes como para un
+              casamiento.&rdquo;
             </p>
             <span className="mt-4 block text-xs uppercase tracking-[0.2em] text-ink/50">
-              — The Bejeweled Studio
+              — El equipo de Bejeweled
             </span>
             <Link
               href="/about"
               className="mt-8 inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-3 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
             >
-              Our story <ArrowRightIcon className="h-4 w-4" />
+              Nuestra historia <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
         </Reveal>
@@ -138,17 +139,17 @@ export default async function Home() {
           <div className="mb-8 flex items-end justify-between">
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-gold">
-                Just landed
+                Recién llegados
               </span>
-              <h2 className="font-script text-3xl text-ink md:text-4xl">
-                New Arrivals
+              <h2 className="font-script mt-1 text-3xl text-ink md:text-4xl">
+                Novedades
               </h2>
             </div>
             <Link
               href="/shop"
               className="hidden items-center gap-1.5 text-sm text-ink/70 hover:text-gold md:flex"
             >
-              View all <ArrowRightIcon className="h-4 w-4" />
+              Ver todo <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
         </Reveal>

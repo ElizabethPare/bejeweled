@@ -11,9 +11,9 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 
 export const metadata: Metadata = {
-  title: "Bejeweled — Everyday Fine Jewelry",
+  title: "Bejeweled — Joyas para todos los días",
   description:
-    "Handcrafted rings, necklaces, earrings and bracelets designed in small batches. Bejeweled is everyday fine jewelry, made to be worn.",
+    "Anillos, collares, aros y pulseras seleccionados uno por uno. Bejeweled es joyería para usar todos los días, no para guardar.",
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="es" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-pearl text-ink">
         <CartProvider>
           <Header />

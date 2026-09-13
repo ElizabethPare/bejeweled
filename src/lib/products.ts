@@ -1,4 +1,4 @@
-export type Category = "Rings" | "Necklaces" | "Earrings" | "Bracelets";
+export type Category = "Anillos" | "Collares" | "Aros" | "Pulseras";
 
 export type Product = {
   id: string;
@@ -18,222 +18,222 @@ export type Product = {
 };
 
 // NOTE: These are placeholder products with generated placeholder artwork
-// (no real photography yet). Swap `colorway`/`accent` and add real photos
-// later — the ProductArt component falls back to an <img> automatically
-// once a product has an `image` field.
+// (no real photography yet). They get replaced by whatever the shop owner
+// loads from /admin — the ProductArt component falls back to an <img>
+// automatically once a product has an `image` field.
 export const products: Product[] = [
   {
     id: "1",
-    slug: "aurora-solitaire-ring",
-    name: "Aurora Solitaire Ring",
-    category: "Rings",
+    slug: "anillo-solitario-aurora",
+    name: "Anillo Solitario Aurora",
+    category: "Anillos",
     price: 245,
     compareAt: 295,
     description:
-      "A single round-cut stone set in a delicate band that catches the light from every angle. Simple enough for every day, sparkly enough for every night.",
+      "Una piedra de corte redondo sobre una banda delicada que atrapa la luz desde todos los ángulos. Simple para todos los días, con el brillo justo para las noches.",
     details: [
-      "18k gold vermeil over sterling silver",
-      "Lab-grown cubic zirconia, round brilliant cut",
-      "Band width: 1.6mm",
-      "Made to order, ships in 3–5 days",
+      "Plata 925 con baño de oro 18k",
+      "Circonia cúbica, corte brillante redondo",
+      "Ancho de la banda: 1,6 mm",
+      "Envío en 3 a 5 días hábiles",
     ],
-    material: "Gold Vermeil",
+    material: "Baño de oro 18k",
     colorway: "#c8a44d",
     accent: "#f2d9df",
     isBestseller: true,
   },
   {
     id: "2",
-    slug: "twin-hearts-stacking-ring",
-    name: "Twin Hearts Stacking Ring",
-    category: "Rings",
+    slug: "anillo-doble-corazon",
+    name: "Anillo Doble Corazón",
+    category: "Anillos",
     price: 88,
     description:
-      "Two tiny hearts, nose to nose, on a thin stacking band. Wear it alone or pile it high with your other favorites.",
+      "Dos corazones diminutos, frente a frente, sobre una banda fina para apilar. Va solo o acompañado de tus otros favoritos.",
     details: [
-      "Sterling silver with 14k gold plating",
-      "Adjustable-friendly sizing guide",
-      "Tarnish-resistant coating",
+      "Plata 925 con baño de oro 14k",
+      "Guía de talles disponible",
+      "Terminación antimanchas",
     ],
-    material: "Gold Plated Silver",
+    material: "Plata con baño de oro",
     colorway: "#e3c988",
     accent: "#fbf7f2",
     isNew: true,
   },
   {
     id: "3",
-    slug: "celestine-signet-ring",
-    name: "Celestine Signet Ring",
-    category: "Rings",
+    slug: "anillo-sello-celestine",
+    name: "Anillo Sello Celestine",
+    category: "Anillos",
     price: 132,
     description:
-      "A modern take on the classic signet, engraved with a tiny star for the hopeless romantics who still wish on them.",
+      "Una versión moderna del clásico anillo sello, con una pequeña estrella grabada para las románticas que todavía piden deseos.",
     details: [
-      "Solid brass, gold-plated",
-      "Hand-finished engraving",
-      "Available in sizes 5–9",
+      "Bronce macizo con baño de oro",
+      "Grabado en relieve",
+      "Talles disponibles: 12 a 20",
     ],
-    material: "Gold Plated Brass",
+    material: "Bronce con baño de oro",
     colorway: "#2e1b3b",
     accent: "#c8a44d",
   },
   {
     id: "4",
-    slug: "whisper-chain-necklace",
-    name: "Whisper Chain Necklace",
-    category: "Necklaces",
+    slug: "collar-cadena-susurro",
+    name: "Collar Cadena Susurro",
+    category: "Collares",
     price: 96,
     description:
-      "An impossibly fine chain that sits close to the collarbone — the kind of necklace people ask about because it's just barely there.",
+      "Una cadena finísima que se apoya sobre la clavícula — de esas que la gente te pregunta justamente porque casi no se ven.",
     details: [
-      "14k gold-filled chain",
-      '16"–18" adjustable length',
-      "Lobster clasp closure",
+      "Cadena gold filled 14k",
+      "Largo regulable de 40 a 45 cm",
+      "Cierre mosquetón",
     ],
-    material: "Gold Filled",
+    material: "Gold filled",
     colorway: "#c8a44d",
     accent: "#2e1b3b",
     isBestseller: true,
   },
   {
     id: "5",
-    slug: "amethyst-drop-pendant",
-    name: "Amethyst Drop Pendant",
-    category: "Necklaces",
+    slug: "colgante-gota-amatista",
+    name: "Colgante Gota Amatista",
+    category: "Collares",
     price: 168,
     compareAt: 198,
     description:
-      "A faceted amethyst-hued drop that swings gently with every step, set in a hand-forged bezel true to the Bejeweled ink.",
+      "Una gota facetada en tono amatista que se balancea con cada paso, engarzada en un bisel que sigue el violeta de Bejeweled.",
     details: [
-      "Sterling silver bezel, gold vermeil finish",
-      "Lab-created stone, teardrop cut",
-      '18" chain with 2" extender',
+      "Bisel de plata 925 con baño de oro",
+      "Piedra de laboratorio, corte gota",
+      "Cadena de 45 cm con extensor de 5 cm",
     ],
-    material: "Gold Vermeil",
+    material: "Baño de oro 18k",
     colorway: "#4a3560",
     accent: "#e3c988",
     isNew: true,
   },
   {
     id: "6",
-    slug: "petal-locket-necklace",
-    name: "Petal Locket Necklace",
-    category: "Necklaces",
+    slug: "collar-medallon-petalo",
+    name: "Collar Medallón Pétalo",
+    category: "Collares",
     price: 142,
     description:
-      "A tiny locket shaped like a folded petal, just big enough for a photo or a pressed flower and a secret.",
+      "Un medallón diminuto con forma de pétalo plegado, del tamaño justo para una foto, una flor prensada y un secreto.",
     details: [
-      "Sterling silver, high-polish finish",
-      "Opens and closes with a gentle click",
-      '17" cable chain',
+      "Plata 925, terminación espejo",
+      "Abre y cierra con un clic suave",
+      "Cadena forzada de 43 cm",
     ],
-    material: "Sterling Silver",
+    material: "Plata 925",
     colorway: "#f2d9df",
     accent: "#2e1b3b",
   },
   {
     id: "7",
-    slug: "cascade-hoop-earrings",
-    name: "Cascade Hoop Earrings",
-    category: "Earrings",
+    slug: "aros-argolla-cascada",
+    name: "Aros Argolla Cascada",
+    category: "Aros",
     price: 78,
     description:
-      "Graduated hoops that catch the light as they move — lightweight enough to forget you're wearing them.",
+      "Argollas graduadas que juegan con la luz al moverse — tan livianas que te olvidás de que las tenés puestas.",
     details: [
-      "14k gold-plated brass",
-      "Hypoallergenic, nickel-free posts",
-      "Diameter: 28mm",
+      "Bronce con baño de oro 14k",
+      "Hipoalergénicos, sin níquel",
+      "Diámetro: 28 mm",
     ],
-    material: "Gold Plated Brass",
+    material: "Bronce con baño de oro",
     colorway: "#c8a44d",
     accent: "#f8e9ec",
     isBestseller: true,
   },
   {
     id: "8",
-    slug: "stardust-stud-earrings",
-    name: "Stardust Stud Earrings",
-    category: "Earrings",
+    slug: "aros-polvo-de-estrellas",
+    name: "Aros Polvo de Estrellas",
+    category: "Aros",
     price: 58,
     description:
-      "A scatter of tiny pave stones pressed into a soft star shape — your new everyday, everywhere earrings.",
+      "Un puñado de piedras diminutas en forma de estrella suave — tus nuevos aros de todos los días, para todos lados.",
     details: [
-      "Sterling silver with rhodium plating",
-      "Cubic zirconia pave setting",
-      "Butterfly backs included",
+      "Plata 925 con baño de rodio",
+      "Engarce pavé de circonias",
+      "Incluye mariposas de cierre",
     ],
-    material: "Rhodium Plated Silver",
+    material: "Plata con baño de rodio",
     colorway: "#fbf7f2",
     accent: "#c8a44d",
     isNew: true,
   },
   {
     id: "9",
-    slug: "velvet-drop-earrings",
-    name: "Velvet Drop Earrings",
-    category: "Earrings",
+    slug: "aros-colgantes-terciopelo",
+    name: "Aros Colgantes Terciopelo",
+    category: "Aros",
     price: 104,
     description:
-      "A softly faceted drop in deep amethyst ink, suspended from a delicate gold thread for evenings that deserve a little drama.",
+      "Una gota facetada en violeta profundo, suspendida de un hilo de oro delicado, para las noches que piden un poco de drama.",
     details: [
-      "Gold vermeil hook",
-      "Lab-created stone, pear cut",
-      "Length: 32mm",
+      "Ganchos con baño de oro 18k",
+      "Piedra de laboratorio, corte pera",
+      "Largo: 32 mm",
     ],
-    material: "Gold Vermeil",
+    material: "Baño de oro 18k",
     colorway: "#2e1b3b",
     accent: "#e3c988",
   },
   {
     id: "10",
-    slug: "linked-hearts-bracelet",
-    name: "Linked Hearts Bracelet",
-    category: "Bracelets",
+    slug: "pulsera-corazones-entrelazados",
+    name: "Pulsera Corazones Entrelazados",
+    category: "Pulseras",
     price: 112,
     description:
-      "A chain of tiny linked hearts that stacks beautifully with everything else in your jewelry box.",
+      "Una cadena de corazones diminutos entrelazados que combina con todo lo demás que tenés en la alhajera.",
     details: [
-      "14k gold-filled chain",
-      '6.5"–8" adjustable',
-      "Spring ring closure",
+      "Cadena gold filled 14k",
+      "Largo regulable de 16 a 20 cm",
+      "Cierre de argolla",
     ],
-    material: "Gold Filled",
+    material: "Gold filled",
     colorway: "#e3c988",
     accent: "#f2d9df",
   },
   {
     id: "11",
-    slug: "orbit-bangle",
-    name: "Orbit Bangle",
-    category: "Bracelets",
+    slug: "esclava-orbita",
+    name: "Esclava Órbita",
+    category: "Pulseras",
     price: 86,
     description:
-      "A slim, solid bangle with a single set stone that spins gently around your wrist as you move.",
+      "Una esclava fina y maciza con una sola piedra engarzada que gira suavemente alrededor de la muñeca al moverte.",
     details: [
-      "Sterling silver, gold vermeil finish",
-      "One size, slips over the hand",
-      "Stone: lab-created cubic zirconia",
+      "Plata 925 con baño de oro",
+      "Talle único, entra por la mano",
+      "Piedra: circonia cúbica",
     ],
-    material: "Gold Vermeil",
+    material: "Baño de oro 18k",
     colorway: "#c8a44d",
     accent: "#4a3560",
     isNew: true,
   },
   {
     id: "12",
-    slug: "moonlit-tennis-bracelet",
-    name: "Moonlit Tennis Bracelet",
-    category: "Bracelets",
+    slug: "pulsera-riviere-luz-de-luna",
+    name: "Pulsera Riviere Luz de Luna",
+    category: "Pulseras",
     price: 210,
     compareAt: 260,
     description:
-      "A continuous line of brilliant-cut stones for the days you want to feel a little bit like moonlight.",
+      "Una línea continua de piedras de corte brillante para los días en los que querés sentirte un poco luz de luna.",
     details: [
-      "Rhodium-plated sterling silver",
-      "Box clasp with figure-8 safety",
-      '7" length',
+      "Plata 925 con baño de rodio",
+      "Cierre de caja con traba de seguridad",
+      "Largo: 18 cm",
     ],
-    material: "Rhodium Plated Silver",
+    material: "Plata con baño de rodio",
     colorway: "#4a3560",
     accent: "#fbf7f2",
     isBestseller: true,
@@ -241,18 +241,56 @@ export const products: Product[] = [
 ];
 
 export const categories: Category[] = [
-  "Rings",
-  "Necklaces",
-  "Earrings",
-  "Bracelets",
+  "Anillos",
+  "Collares",
+  "Aros",
+  "Pulseras",
 ];
+
+/** Slugs of the original English sample catalog. Used to recognise a
+ * database that still holds nothing but the old placeholder rows, so those
+ * can be swapped for the Spanish ones without ever touching real products
+ * the shop owner has loaded. */
+export const legacySampleSlugs = [
+  "aurora-solitaire-ring",
+  "twin-hearts-stacking-ring",
+  "celestine-signet-ring",
+  "whisper-chain-necklace",
+  "amethyst-drop-pendant",
+  "petal-locket-necklace",
+  "cascade-hoop-earrings",
+  "stardust-stud-earrings",
+  "velvet-drop-earrings",
+  "linked-hearts-bracelet",
+  "orbit-bangle",
+  "moonlit-tennis-bracelet",
+];
+
+/** Categories were stored in English before the site was translated. Any row
+ * still carrying an old value is shown under its Spanish equivalent so the
+ * filter chips keep matching. */
+const LEGACY_CATEGORIES: Record<string, Category> = {
+  Rings: "Anillos",
+  Necklaces: "Collares",
+  Earrings: "Aros",
+  Bracelets: "Pulseras",
+};
+
+export function normalizeCategory(value: string): Category {
+  if (LEGACY_CATEGORIES[value]) return LEGACY_CATEGORIES[value];
+  return (categories.includes(value as Category) ? value : "Anillos") as Category;
+}
 
 export function getProductBySlug(slug: string) {
   return products.find((p) => p.slug === slug);
 }
 
 export function formatPrice(n: number) {
-  return `$${n.toFixed(2)}`;
+  const amount = new Intl.NumberFormat("es-AR", {
+    minimumFractionDigits: Number.isInteger(n) ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(n);
+  return `$${amount}`;
 }
 
 export function getRelatedProducts(catalog: Product[], product: Product, count = 4) {
@@ -290,7 +328,7 @@ function dbRowToProduct(row: {
   id: number;
   slug: string;
   name: string;
-  category: Category;
+  category: string;
   price: string | number;
   compare_at: string | number | null;
   description: string;
@@ -306,7 +344,7 @@ function dbRowToProduct(row: {
     id: String(row.id),
     slug: row.slug,
     name: row.name,
-    category: row.category,
+    category: normalizeCategory(row.category),
     price: Number(row.price),
     compareAt: row.compare_at != null ? Number(row.compare_at) : undefined,
     description: row.description,
@@ -324,10 +362,10 @@ function dbRowToProduct(row: {
  * list otherwise. Never throws — a database error falls back to the
  * static list so the storefront stays up. */
 export async function getCatalog(): Promise<Product[]> {
-  const { isDbReady, dbListProducts, dbSeedIfEmpty } = await import("./db");
+  const { isDbReady, dbListProducts, dbSeedSamples } = await import("./db");
   if (!isDbReady()) return products;
   try {
-    await dbSeedIfEmpty(products.map(staticProductToInput));
+    await dbSeedSamples(products.map(staticProductToInput), legacySampleSlugs);
     const rows = await dbListProducts();
     return rows.map(dbRowToProduct);
   } catch (err) {

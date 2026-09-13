@@ -82,10 +82,10 @@ export function BraceletIcon({ className = "", style }: IconProps) {
 }
 
 export const categoryIcon = {
-  Rings: RingIcon,
-  Necklaces: NecklaceIcon,
-  Earrings: EarringIcon,
-  Bracelets: BraceletIcon,
+  Anillos: RingIcon,
+  Collares: NecklaceIcon,
+  Aros: EarringIcon,
+  Pulseras: BraceletIcon,
 };
 
 export function BagIcon({ className = "" }: { className?: string }) {

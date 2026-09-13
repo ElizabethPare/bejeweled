@@ -59,9 +59,33 @@ body {
   background: var(--gold);
 }
 
+/*
+  Borel is a handwriting face with very tall metrics: ascent 986 / descent -1014
+  per 1000 upm, so a line of it needs ~1.5em of vertical room for the ink alone
+  (and declares a 2em content box). With a normal heading line-height (~1.1em)
+  the loops and descenders escape the line box and collide with whatever sits
+  above or below. 1.75 keeps every glyph clear of its neighbours and stops
+  consecutive lines from running into each other.
+*/
 .font-script {
   font-family: "Borel", cursive;
   font-weight: 400;
+  line-height: 1.75;
+}
+
+/* Tighter lockup for the wordmark, where the script sits on its own and the
+   surrounding padding already keeps the glyphs clear. Declared after
+   .font-script (same specificity, both unlayered) so it wins — a Tailwind
+   `leading-*` utility would not, since utilities sit in a lower layer. */
+.font-script-tight {
+  line-height: 1.4;
+}
+
+/* Big multi-line display headings. 1.55 is just above the 1.5em the ink
+   actually occupies, so consecutive lines clear each other while the
+   headline still reads as one tight block. */
+.font-script-display {
+  line-height: 1.55;
 }
 
 @keyframes sparkle-float {
