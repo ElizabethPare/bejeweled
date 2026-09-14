@@ -198,3 +198,139 @@ export async function dbSeedSamples(
   await sql!`DELETE FROM products WHERE slug = ANY(${replaceableSlugs})`;
   for (const p of seed) await dbCreateProduct(p);
 }
+
+// ---------------------------------------------------------------------
+// Orders
+// ---------------------------------------------------------------------
+
+export type OrderStatus = "pendiente" | "aprobado" | "rechazado" | "cancelado";
+
+export type OrderItem = {
+  productId: string;
+  slug: string;
+  name: string;
+  price: number;
+  qty: number;
+};
+
+export type DbOrder = {
+  id: number;
+  reference: string;
+  status: OrderStatus;
+  customer_name: string;
+  customer_email: string;
+  customer_phone: string;
+  address: string;
+  city: string;
+  postal_code: string;
+  notes: string;
+  items: OrderItem[];
+  total: number;
+  preference_id: string | null;
+  payment_id: string | null;
+  payment_detail: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+let ordersSchemaReady: Promise<void> | null = null;
+
+function ensureOrdersSchema(): Promise<void> {
+  if (!sql) throw new Error("Database is not configured");
+  if (!ordersSchemaReady) {
+    ordersSchemaReady = (async () => {
+      await sql!`
+        CREATE TABLE IF NOT EXISTS orders (
+          id SERIAL PRIMARY KEY,
+          reference TEXT UNIQUE NOT NULL,
+          status TEXT NOT NULL DEFAULT 'pendiente',
+          customer_name TEXT NOT NULL DEFAULT '',
+          customer_email TEXT NOT NULL DEFAULT '',
+          customer_phone TEXT NOT NULL DEFAULT '',
+          address TEXT NOT NULL DEFAULT '',
+          city TEXT NOT NULL DEFAULT '',
+          postal_code TEXT NOT NULL DEFAULT '',
+          notes TEXT NOT NULL DEFAULT '',
+          items JSONB NOT NULL DEFAULT '[]',
+          total NUMERIC NOT NULL DEFAULT 0,
+          preference_id TEXT,
+          payment_id TEXT,
+          payment_detail TEXT,
+          created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+          updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+        )
+      `;
+    })();
+  }
+  return ordersSchemaReady;
+}
+
+export type NewOrder = {
+  reference: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  notes: string;
+  items: OrderItem[];
+  total: number;
+};
+
+export async function dbCreateOrder(o: NewOrder): Promise<DbOrder> {
+  await ensureOrdersSchema();
+  const rows = await sql!`
+    INSERT INTO orders
+      (reference, customer_name, customer_email, customer_phone, address, city,
+       postal_code, notes, items, total)
+    VALUES
+      (${o.reference}, ${o.customerName}, ${o.customerEmail}, ${o.customerPhone},
+       ${o.address}, ${o.city}, ${o.postalCode}, ${o.notes},
+       ${JSON.stringify(o.items)}, ${o.total})
+    RETURNING *
+  `;
+  return rows[0] as DbOrder;
+}
+
+export async function dbSetOrderPreference(reference: string, preferenceId: string) {
+  await ensureOrdersSchema();
+  await sql!`
+    UPDATE orders SET preference_id = ${preferenceId}, updated_at = now()
+    WHERE reference = ${reference}
+  `;
+}
+
+/** Records the outcome Mercado Pago reported for an order. */
+export async function dbSetOrderPayment(
+  reference: string,
+  status: OrderStatus,
+  paymentId: string | null,
+  detail: string | null
+) {
+  await ensureOrdersSchema();
+  await sql!`
+    UPDATE orders
+    SET status = ${status}, payment_id = ${paymentId},
+        payment_detail = ${detail}, updated_at = now()
+    WHERE reference = ${reference}
+  `;
+}
+
+export async function dbListOrders(): Promise<DbOrder[]> {
+  await ensureOrdersSchema();
+  const rows = await sql!`SELECT * FROM orders ORDER BY created_at DESC LIMIT 200`;
+  return rows as DbOrder[];
+}
+
+export async function dbGetOrder(id: number): Promise<DbOrder | null> {
+  await ensureOrdersSchema();
+  const rows = await sql!`SELECT * FROM orders WHERE id = ${id} LIMIT 1`;
+  return (rows[0] as DbOrder) ?? null;
+}
+
+export async function dbGetOrderByReference(reference: string): Promise<DbOrder | null> {
+  await ensureOrdersSchema();
+  const rows = await sql!`SELECT * FROM orders WHERE reference = ${reference} LIMIT 1`;
+  return (rows[0] as DbOrder) ?? null;
+}

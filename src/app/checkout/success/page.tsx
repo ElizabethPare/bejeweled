@@ -1,7 +1,10 @@
 "use client";
 
+import { Suspense, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
+import { useCart } from "@/lib/cart-context";
 import { CheckIcon, SparkleIcon } from "@/components/icons";
 
 const sparklePositions = [
@@ -13,7 +16,17 @@ const sparklePositions = [
   { top: "15%", left: "50%", delay: 0.9 },
 ];
 
-export default function CheckoutSuccessPage() {
+function SuccessContent() {
+  const params = useSearchParams();
+  const reference = params.get("ref");
+  const { clearCart } = useCart();
+
+  // The basket is only emptied once the payment actually went through, so a
+  // buyer who abandons or fails at Mercado Pago still finds their cart intact.
+  useEffect(() => {
+    clearCart();
+  }, [clearCart]);
+
   return (
     <div className="relative mx-auto flex min-h-[70vh] max-w-xl flex-col items-center justify-center gap-6 px-5 py-20 text-center">
       {sparklePositions.map((s, i) => (
@@ -47,9 +60,16 @@ export default function CheckoutSuccessPage() {
           ¡Gracias por tu compra!
         </h1>
         <p className="mx-auto mt-4 max-w-sm text-ink/65">
-          Recibimos tu pedido. Te enviamos la confirmación por correo y ya
-          estamos preparando tus nuevas favoritas.
+          Recibimos tu pago. Preparamos el pedido enseguida y te escribimos
+          para coordinar el envío, que demora entre 5 y 7 días hábiles.
         </p>
+        {reference && (
+          <p className="mt-4 text-sm text-ink/50">
+            Tu número de pedido es{" "}
+            <span className="font-medium text-ink">{reference}</span>. Guardalo
+            por si necesitás escribirnos.
+          </p>
+        )}
         <Link
           href="/shop"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm uppercase tracking-[0.12em] text-pearl transition-colors hover:bg-ink-soft"
@@ -58,5 +78,13 @@ export default function CheckoutSuccessPage() {
         </Link>
       </motion.div>
     </div>
+  );
+}
+
+export default function CheckoutSuccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-[70vh]" />}>
+      <SuccessContent />
+    </Suspense>
   );
 }

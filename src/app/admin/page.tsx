@@ -58,6 +58,12 @@ export default function AdminDashboard() {
         </div>
         <div className="flex items-center gap-3">
           <Link
+            href="/admin/pedidos"
+            className="rounded-full border border-ink/15 px-5 py-2.5 text-sm uppercase tracking-[0.1em] text-ink/70 transition-colors hover:border-gold hover:text-ink"
+          >
+            Pedidos
+          </Link>
+          <Link
             href="/admin/products/new"
             className="rounded-full bg-ink px-5 py-2.5 text-sm uppercase tracking-[0.1em] text-pearl transition-colors hover:bg-ink-soft"
           >
