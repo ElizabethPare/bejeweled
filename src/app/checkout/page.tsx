@@ -135,7 +135,9 @@ export default function CheckoutPage() {
             <span>{formatPrice(total)}</span>
           </div>
           <p className="mt-2 text-xs text-ink/45">
-            El costo del envío se coordina después de la compra.
+            Preparamos tu pedido apenas se confirma la compra. La entrega
+            demora entre 5 y 7 días hábiles y el costo del envío se coordina
+            aparte. No realizamos cambios ni devoluciones.
           </p>
         </div>
       </div>

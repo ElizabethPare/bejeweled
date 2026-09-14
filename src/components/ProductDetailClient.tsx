@@ -17,11 +17,12 @@ import { CheckIcon, MinusIcon, PlusIcon, SparkleIcon } from "./icons";
 const accordionSections = (product: Product) => [
   { title: "Detalles", content: product.details },
   {
-    title: "Envíos y cambios",
+    title: "Envíos",
     content: [
+      "Preparamos tu pedido apenas se confirma la compra",
+      "La entrega demora entre 5 y 7 días hábiles",
       "El costo del envío se coordina después de la compra",
-      "Preparamos los pedidos en 3 a 5 días hábiles",
-      "Consultanos por cambios en piezas sin uso",
+      "No realizamos cambios ni devoluciones",
     ],
   },
   {

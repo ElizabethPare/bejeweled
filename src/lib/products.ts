@@ -35,7 +35,7 @@ export const products: Product[] = [
       "Plata 925 con baño de oro 18k",
       "Circonia cúbica, corte brillante redondo",
       "Ancho de la banda: 1,6 mm",
-      "Envío en 3 a 5 días hábiles",
+      "Entrega en 5 a 7 días hábiles",
     ],
     material: "Baño de oro 18k",
     colorway: "#c8a44d",

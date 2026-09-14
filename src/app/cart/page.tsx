@@ -120,8 +120,9 @@ export default function CartPage() {
             <span>{formatPrice(subtotal)}</span>
           </div>
           <p className="mt-2 text-xs text-ink/45">
-            El costo del envío se coordina después de la compra y no está
-            incluido en este total.
+            Preparamos tu pedido apenas se confirma la compra y la entrega
+            demora entre 5 y 7 días hábiles. El costo del envío se coordina
+            aparte y no está incluido en este total.
           </p>
           <Link
             href="/checkout"

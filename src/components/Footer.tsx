@@ -27,7 +27,7 @@ export default function Footer() {
 
         <div className="flex flex-col gap-3 text-sm">
           <span className="mb-1 font-medium text-ink">Ayuda</span>
-          <span className="text-ink/60">Envíos y cambios</span>
+          <span className="text-ink/60">Envíos</span>
           <span className="text-ink/60">Guía de talles</span>
           <span className="text-ink/60">Cuidado de las joyas</span>
           <span className="text-ink/60">Contacto</span>
